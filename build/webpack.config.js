@@ -62,9 +62,9 @@ module.exports = env => {
             path.resolve("node_modules/webpack-dev-server/client"),
             path.resolve("node_modules/postcss-loader/src"),
           ],
-          options: {
-            presets: ["@babel/preset-env"]
-          }
+          // options: {
+          //   presets: ["@babel/preset-env"],
+          // }
         },
         {
           test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

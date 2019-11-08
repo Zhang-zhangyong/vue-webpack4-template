@@ -7,11 +7,11 @@
     >
       点击我
     </button>
-    <img src="../img/logo.png">
+    <!-- <img src="../img/logo.png"> -->
   </div>
 </template>
 <script>
-import LoginApi from '../service/login/loginApi';
+import LoginApi from "../service/login/loginApi";
 
 export default {
   name: "Home",
@@ -20,13 +20,20 @@ export default {
       name: "HOME"
     };
   },
-  mounted() {
-    console.log(LoginApi);
-    LoginApi.toLogin().then((result) => {
-      console.log(result);
-    }).catch((err) => {
-      console.log(err);
-    });
+  async mounted() {
+    try {
+      let loginData = await LoginApi.toLogin();
+    }
+    catch {
+      let err = await LoginApi.toLogin();
+    }
+    // LoginApi.toLogin()
+    //   .then(result => {
+    //     console.log(result);
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
   },
   methods: {
     handleClick() {
