@@ -11,7 +11,7 @@
   </div>
 </template>
 <script>
-// import { formater } from "../../static/util";
+import LoginApi from '../service/login/loginApi';
 
 export default {
   name: "Home",
@@ -21,7 +21,12 @@ export default {
     };
   },
   mounted() {
-    
+    console.log(LoginApi);
+    LoginApi.toLogin().then((result) => {
+      console.log(result);
+    }).catch((err) => {
+      console.log(err);
+    });
   },
   methods: {
     handleClick() {
