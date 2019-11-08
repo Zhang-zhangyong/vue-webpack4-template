@@ -18,6 +18,14 @@ function styleLoaders(env, loaders) {
   }
 }
 
+const createLintingRule = () => {
+
+}
+// function createLintingRule() {
+
+  
+// }
+
 module.exports = env => {
   env = env || {};
   return {
@@ -52,7 +60,7 @@ module.exports = env => {
           include: [
             path.resolve("src"),
             path.resolve("node_modules/webpack-dev-server/client"),
-            path.resolve("node_modules/postcss-loader/src")
+            path.resolve("node_modules/postcss-loader/src"),
           ],
           options: {
             presets: ["@babel/preset-env"]
@@ -65,16 +73,17 @@ module.exports = env => {
             limit: 10000,
             name: "img/[name].[hash:7].[ext]"
           }
-        }
-        // {
-        //   test: /\.js$/,
-        //   loader: 'eslint-loader',
-        //   enforce: "pre",
-        //   include: [path.resolve(__dirname, 'src')], // 指定检查的目录
-        //   options: { // 这里的配置项参数将会被传递到 eslint 的 CLIEngine
-        //       // formatter: require('eslint-friendly-formatter') // 指定错误报告的格式规范
-        //   }
-        // },
+        },
+        {
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          enforce: 'pre',
+          include: [resolve('src')],
+          options: {
+            formatter: require('eslint-friendly-formatter'),
+            emitWarning: true
+          }
+        },
       ]
     },
     resolve: {

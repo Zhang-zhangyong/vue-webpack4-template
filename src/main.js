@@ -1,8 +1,8 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
 
-import $htttp from './service/index'
+import $htttp from './service/index';
 
 Vue.prototype.$http = $htttp;
 
@@ -13,4 +13,4 @@ new Vue({
     App
   },
   template: `<App/>`
-})
+});

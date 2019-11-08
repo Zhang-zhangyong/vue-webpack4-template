@@ -2,7 +2,6 @@
   <div class="detail">
     <div class="son">
       Detail
-
     </div>
   </div>
 </template>
@@ -13,13 +12,13 @@ export default {
   data() {
     return {
       name: '张泳'
-    }
+    };
   },
   mounted () {
   },
   methods: {
   },
-}
+};
 </script>
 <style lang="scss" scoped>
   .detail {

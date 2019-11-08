@@ -1,13 +1,17 @@
 <template>
   <div class="home">
     {{ name }}
-    <button class="btn" @click="handleClick">点击我</button>
+    <button
+      class="btn"
+      @click="handleClick"
+    >
+      点击我
+    </button>
     <img src="../img/logo.png">
   </div>
 </template>
 <script>
-import person from "../../static/static.json";
-import { formater } from "../../static/util";
+// import { formater } from "../../static/util";
 
 export default {
   name: "Home",
@@ -17,7 +21,6 @@ export default {
     };
   },
   mounted() {
-    let a = this.a ? '111' : '222';
     
   },
   methods: {

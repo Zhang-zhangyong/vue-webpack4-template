@@ -5,6 +5,7 @@ const vueLoaderPlugin = require("vue-loader/lib/plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
   mode: "production",
@@ -45,7 +46,10 @@ module.exports = {
       {
         from: path.resolve(__dirname, "../static"),
         to: "static",
-        ignore: [".*"]
+        ignore: [".*"],
+        // transform() {
+        //   return new UglifyJsPlugin()
+        // }
       }
     ]),
     new webpack.DefinePlugin({

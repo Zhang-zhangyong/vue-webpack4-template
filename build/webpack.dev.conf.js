@@ -4,27 +4,30 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 // const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const FriendlyErrorsPlugin = require("friendly-errors-webpack-plugin")
 
 
 module.exports = {
-  mode: 'development',
+  mode: "development",
   // output: {
   //   filename: 'bundle.js'
   // },
   devServer: {
-    publicPath: '/',
+    publicPath: "/",
     port: "8000",
     proxy: {
       // 代理请求
-      // "/api": { 
+      // "/api": {
       //   target: "http://localhost:3000",
       //   pathRewrite: {"^/api" : ""}
       // }
-    }
+    },
+    // quiet: true,
   },
+  stats: "minimal", // 控制台日志显示控制
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'index.html'
+      template: "index.html"
     }),
     new VueLoaderPlugin(),
     new webpack.DefinePlugin({
@@ -34,5 +37,6 @@ module.exports = {
         BASE_URL: '"https://dev.api****"'
       }
     }),
+    new FriendlyErrorsPlugin()
   ]
-}
+};
