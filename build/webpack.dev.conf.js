@@ -14,14 +14,15 @@ module.exports = {
   // },
   devServer: {
     publicPath: "/",
-    port: "8000",
+    port: "8080",
     proxy: {
       // 代理请求
-      // "/api": {
-      //   target: "http://localhost:3000",
-      //   pathRewrite: {"^/api" : ""}
+      // "/team": {
+      //   target: "http://192.168.0.139:11035",
+      //   pathRewrite: {"^/team" : ""}
       // }
     },
+    disableHostCheck: true
     // quiet: true,
   },
   stats: "minimal", // 控制台日志显示控制
@@ -34,7 +35,7 @@ module.exports = {
       "process.env": {
         NODE_ENV: '"development"',
         ENV_CONFIG: '"dev"',
-        BASE_URL: '"https://dev.api****"'
+        BASE_URL: '"http://*********/"'
       }
     }),
     new FriendlyErrorsPlugin()

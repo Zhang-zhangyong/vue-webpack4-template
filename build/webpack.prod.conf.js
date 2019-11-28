@@ -4,16 +4,18 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const vueLoaderPlugin = require("vue-loader/lib/plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
   mode: "production",
   output: {
+    publicPath: './',
     path: path.resolve(__dirname, "../dist"),
-    filename: "js/[name].min.js",
+    filename: "js/[name].min.[chunkhash:8].js",
     chunkFilename: "js/[name].min.js"
   },
+  stats: "minimal",
   optimization: {
     splitChunks: {
       chunks: "initial",
@@ -38,7 +40,14 @@ module.exports = {
       // cleanOnceBeforeBuildPatterns: ['**/*', '!dist/*.*']
     }),
     new HtmlWebpackPlugin({
-      template: "index.html"
+      template: "index.html",
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeAttributeQuotes: true
+        // more options:
+        // https://github.com/kangax/html-minifier#options-quick-reference
+      }
     }),
     new vueLoaderPlugin(),
     // copy custom static assets
@@ -50,16 +59,27 @@ module.exports = {
         // transform() {
         //   return new UglifyJsPlugin()
         // }
+      },
+      {
+        from: path.resolve(__dirname, "../text"),
+        to: "./",
+        ignore: [".*"],
+        // transform() {
+        //   return new UglifyJsPlugin()
+        // }
       }
     ]),
     new webpack.DefinePlugin({
       "process.env": {
         NODE_ENV: '"production"',
         ENV_CONFIG: '"prod"',
-        BASE_URL: '"https://prodction.api****"'
+        BASE_URL: '"https://*******"'
       }
     }),
-    new ExtractTextPlugin("./style/styles.css"),
+    new MiniCssExtractPlugin({
+      filename: 'style/[name].[chunkhash:8].css',
+      chunkFilename: 'style/[name].css'
+    })
     // webpack4 已经移除该方法 改为config.optimization.splitChunks
     // new webpack.CommonsChunkPlugin({ 
     //   name: 'vendor',

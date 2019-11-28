@@ -1,9 +1,7 @@
 
 import axios from 'axios';
 import qs from 'qs';
-
-console.log(process.env, "env");
-
+import { Toast } from 'vant';
 /**
  *  获取token
  * @returns token
@@ -13,22 +11,27 @@ function getToken() {
   return token;
 }
 
+// eslint-disable-next-line no-undef
 const baseURL = process.env.BASE_URL;
 const $http = axios.create({
   baseURL: baseURL,
-  timeout: 5000
+  // timeout: 10000
 });
 
 // 拦截请求
 $http.interceptors.request.use(
   config => {
-    console.log(config, 'config');
+    // console.log(config, 'config');
     let token = getToken();
-    // if(token) {
-    //   config.headers['token'] = getToken();
-    //   // config.headers['content-type'] = 'application/json;charset=utf-8'; 
-    //   config.headers['content-typee'] = 'application/x-www-form-urlencoded';
-    // }
+    if(token) {
+      config.data['token'] = getToken();
+      // config.headers['content-type'] = 'application/json;charset=utf-8';
+      // config.headers['content-type'] = 'application/x-www-form-urlencoded';
+    }
+    if(config.method === 'post') {
+      config.headers['content-type'] = 'application/x-www-form-urlencoded';
+      config.data = qs.stringify(config.data);
+    }
     return config;
   },
   err => {
@@ -39,17 +42,15 @@ $http.interceptors.request.use(
 // 请求结果拦截
 $http.interceptors.response.use(
   response => {
-    console.log(response);
+    // console.log(response, 'response');
     let res = response.data;
-    if(res.code === '') {
-
+    if(res.code === 'OK') {
+      return res;
+    } else {
+      Toast.fail('接口异常，请稍后重试');
+      return res;
+      // Promise.reject(res.message);
     }
-    return res;
-    // if(response.data.code === 'OK') {
-    //   return response.data.data;
-    // } else {
-    //   return response.data;
-    // }
   },
   err => {
     Promise.reject(err);

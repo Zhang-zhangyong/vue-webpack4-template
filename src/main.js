@@ -1,14 +1,20 @@
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
+import store from './store';
 
-// import $htttp from './service/index';
+import './style/reset.css';
+import { resizeFontSize } from './utils/index';
+import { Toast, Button } from 'vant';
 
-// Vue.prototype.$http = $htttp;
+window.onresize = resizeFontSize;
+resizeFontSize();
+Vue.use(Toast).use(Button);
 
 new Vue({
   el: '#app',
   router,
+  store,
   components: {
     App
   },

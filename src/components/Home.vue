@@ -7,7 +7,8 @@
     >
       点击我
     </button>
-    <!-- <img src="../img/logo.png"> -->
+    <van-button type="info">信息按钮</van-button>
+    
   </div>
 </template>
 <script>

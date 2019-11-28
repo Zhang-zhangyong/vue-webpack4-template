@@ -2,27 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="format-detection" content="telephone=yes"/>
   <title>Vue</title>
 </head>
 <body>
   <div id="app"></div>
 </body>
-<script>
-  //移动端适配
-  //获得屏幕大小
-    window.onload = function() {
-      window.onresize = setDomFont
-      function setDomFont() {
-        let htmlwidth = document.documentElement.clientWidth || document.body.clientWidth;  //浏览器兼容
-        console.log("屏幕宽度："+ htmlwidth) //iphone5:320 iphone6:375
-        //获得html DOM元素
-        let htmlDom = document.getElementsByTagName('html')[0];
-        //给DOM元素设置样式
-        htmlDom.style.fontSize = htmlwidth / 375 * 100 + 'px'; 
-      }
-      setDomFont()
-    }
-</script>
 </html>

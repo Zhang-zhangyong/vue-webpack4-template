@@ -1,30 +1,35 @@
 
 const path = require("path");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
 function styleLoaders(env, loaders) {
-  if(env.production) {
-    return ExtractTextPlugin.extract({
-      use: loaders,
-      fallback: "vue-style-loader"
+  if(env.production || env.pre) {
+    loaders.unshift({
+      loader: MiniCssExtractPlugin.loader,
+      options: {
+        publicPath:'../'
+      }
     })
+    return loaders;
   } else {
     return ["vue-style-loader"].concat(loaders)
   }
 }
 
-const createLintingRule = () => {
-
-}
-// function createLintingRule() {
-
-  
-// }
+const createLintingRule = () => ({
+  test: /\.(js|vue)$/,
+  loader: 'eslint-loader',
+  enforce: 'pre',
+  include: [resolve('src')],
+  options: {
+    formatter: require('eslint-friendly-formatter'),
+    emitWarning: true
+  }
+})
 
 module.exports = env => {
   env = env || {};
@@ -32,13 +37,15 @@ module.exports = env => {
     entry: "./src/main.js",
     module: {
       rules: [
+        ...(env.development ? [createLintingRule()] : []),
         {
           test: /\.(css|scss)$/,
-          use: styleLoaders(env, ["css-loader", "sass-loader"]),
-          // use: ExtractTextPlugin.extract({
-          //   fallback: "vue-style-loader",
-          //   use: ["vue-style-loader", "css-loader"],
-          // })
+          // use: [
+          //   MiniCssExtractPlugin.loader,
+          //   "css-loader",
+          //   "sass-loader"
+          // ]
+          use: styleLoaders(env, ["css-loader", "sass-loader"])
         },
         {
           test: /\.(css|scss)$/,
@@ -73,17 +80,7 @@ module.exports = env => {
             limit: 10000,
             name: "img/[name].[hash:7].[ext]"
           }
-        },
-        {
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          enforce: 'pre',
-          include: [resolve('src')],
-          options: {
-            formatter: require('eslint-friendly-formatter'),
-            emitWarning: true
-          }
-        },
+        }
       ]
     },
     resolve: {
@@ -93,8 +90,8 @@ module.exports = env => {
         "@": resolve("src")
       }
     },
-    ...(env.development
-      ? require("./webpack.dev.conf")
-      : require("./webpack.prod.conf"))
+    ...(env.development ? require("./webpack.dev.conf") : env.pre ? require("./webpack.pre.conf") : require("./webpack.prod.conf"))
   };
 };
+
+
