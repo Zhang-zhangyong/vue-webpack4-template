@@ -22,8 +22,10 @@ export default {
 </script>
 <style lang="scss" scoped>
   .detail {
+    padding-top: 30px;
     display: flex;
     flex-direction: column;
+    font-size: 24px;
     .son {
       color: skyblue;
     }

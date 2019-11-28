@@ -1,14 +1,7 @@
 <template>
   <div class="home">
-    {{ name }}
-    <button
-      class="btn"
-      @click="handleClick"
-    >
-      点击我
-    </button>
-    <van-button type="info">信息按钮</van-button>
-
+    <div class="header"></div>
+    <van-button class="btn" type="info"@click="handleClick">跳转详情页</van-button>
   </div>
 </template>
 <script>
@@ -42,9 +35,20 @@ export default {
 .home {
   color: burlywood;
   font-weight: 600;
+  padding-top: 20px;
+  .header {
+    width: 335px;
+    height: 101px;
+    background:linear-gradient(224deg,rgba(129,144,170,1) 0%,rgba(103,116,139,1) 100%);
+    border-radius:4px;
+    margin: 0 auto;
+  }
   img {
     display: block;
     margin: 0 auto;
+  }
+  .btn {
+    margin-top: 20px;
   }
 }
 </style>
