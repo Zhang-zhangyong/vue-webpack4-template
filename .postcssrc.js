@@ -5,6 +5,10 @@ module.exports = {
     // "postcss-import": {},
     // "postcss-url": {},
     // to edit target browsers: use "browserslist" field in package.json
-    "autoprefixer": {}
+    "autoprefixer": {},
+    'postcss-pxtorem': {
+      rootValue: 37.5, //vant-UI的官方根字体大小是37.5
+      propList: ['*']
+    }
   }
 }

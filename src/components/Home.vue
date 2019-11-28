@@ -8,11 +8,11 @@
       点击我
     </button>
     <van-button type="info">信息按钮</van-button>
-    
+
   </div>
 </template>
 <script>
-import LoginApi from "../service/login/loginApi";
+// import LoginApi from "../service/login/loginApi";
 
 export default {
   name: "Home",
@@ -23,18 +23,11 @@ export default {
   },
   async mounted() {
     try {
-      let loginData = await LoginApi.toLogin();
+      // let loginData = await LoginApi.toLogin();
     }
     catch {
-      let err = await LoginApi.toLogin();
+      // let err = await LoginApi.toLogin();
     }
-    // LoginApi.toLogin()
-    //   .then(result => {
-    //     console.log(result);
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
   },
   methods: {
     handleClick() {
