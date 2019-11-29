@@ -1,13 +1,20 @@
 {
-  "name": "lucas-vue-h5",
+  "name": "webpack4-vue",
   "version": "1.0.0",
   "main": "index.js",
+  "author": "Zhang-zhangyong",
   "scripts": {
     "dev": "cross-env NODE_ENV=develpment webpack-dev-server --config ./build/webpack.dev.conf.js",
-    "dev-build": "cross-env NODE_ENV=production webpack --config ./build/webpack.pre.conf.js",
-    "lucas-build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.conf.js",
     "build": "node ./build/build.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zhang-zhangyong/vue-webpack4-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Zhang-zhangyong/vue-webpack4-template/issues"
+  },
+  "homepage": "https://github.com/Zhang-zhangyong/vue-webpack4-template#readme",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.7.2",
@@ -68,12 +75,5 @@
     "not ie <= 8",
     "FireFox >= 20",
     "ios >= 8"
-  ],
-  "description": "h5活动开发",
-  "repository": {
-    "type": "git",
-    "url": "git@gitlab.lucasgchr.com:lucasgchr/embeded-h5/h5.git"
-  },
-  "keywords": [],
-  "author": ""
+  ]
 }
