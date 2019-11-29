@@ -65,19 +65,14 @@ module.exports = webpackMerge(baseConfg, {
 		]),
 		new webpack.DefinePlugin({
 			"process.env": {
-				NODE_ENV: '"production"',
-				ENV_CONFIG: '"prod"',
-				BASE_URL: '"https://embeded-h5-api.lucasgchr.com/"'
+				NODE_ENV: '"pre-production"',
+				ENV_CONFIG: '"pre"',
+				BASE_URL: '"http://embeded-h5-api.columbus.im87.cn/"'
 			}
 		}),
 		new MiniCssExtractPlugin({
 			filename: 'style/[name].[chunkhash:8].css',
 			chunkFilename: 'style/[name].css'
 		})
-		// webpack4 已经移除该方法 改为config.optimization.splitChunks
-		// new webpack.CommonsChunkPlugin({ 
-		//   name: 'vendor',
-		//   filename: '[name].js'
-		// })
 	]
 }) 
