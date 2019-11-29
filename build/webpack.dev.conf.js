@@ -39,7 +39,7 @@ module.exports = webpackMerge(baseConfg,{
 			"process.env": {
 				NODE_ENV: '"development"',
 				ENV_CONFIG: '"dev"',
-				BASE_URL: '"http://embeded-h5-api.columbus.im87.cn/"'
+				BASE_URL: '"http://***/"'
 			}
 		}),
 		new FriendlyErrorsPlugin()

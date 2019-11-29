@@ -67,7 +67,7 @@ module.exports = webpackMerge(baseConfg, {
 			"process.env": {
 				NODE_ENV: '"production"',
 				ENV_CONFIG: '"prod"',
-				BASE_URL: '"https://embeded-h5-api.lucasgchr.com/"'
+				BASE_URL: '"https://*********/"'
 			}
 		}),
 		new MiniCssExtractPlugin({
