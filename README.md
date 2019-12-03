@@ -1,6 +1,7 @@
 # vue-webpack4-template
   基于webpack4.0 学习搭建的vue-cli模板
   > webpack4.0 更新了好久了，之前写项目都是基于vue-cli改造开发，从未自己动手从零开始搭建一个自己的vue-cli,于是工作之余，忙里偷闲，搭建一个脚手架学习webpack4构建一个轻量级工具，中间遇到不少webpack4.0的坑大都在文件中注释
+  多页面入口[点这里](https://github.com/Zhang-zhangyong/vue-webpack4-multiple-template)
 
 
 # 项目结构
