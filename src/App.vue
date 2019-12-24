@@ -2,13 +2,18 @@
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
     <a href="">12312312</a>
+    <Test />
     <router-view />
   </div>
 </template>
 
 <script>
+import Test from '@/components/Test';
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Test
+  }
 };
 </script>
 
