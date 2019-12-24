@@ -52,17 +52,17 @@ module.exports = webpackMerge(baseConfg, {
 		}),
 		// copy custom static assets
 		new CopyWebpackPlugin([
-			{
-				from: path.resolve(__dirname, "../static"),
-				to: "static",
-				ignore: [".*"],
-			},
-			{
-				from: path.resolve(__dirname, "../text"),
-				to: "./",
-				ignore: [".*"],
-			}
-		]),
+			// {
+			// 	from: path.resolve(__dirname, "../static"),
+			// 	to: "static",
+			// 	ignore: [".*"],
+			// },
+			// {
+			// 	from: path.resolve(__dirname, "../text"),
+			// 	to: "./",
+			// 	ignore: [".*"],
+			// }
+    ]),
 		new webpack.DefinePlugin({
 			"process.env": {
 				NODE_ENV: '"production"',

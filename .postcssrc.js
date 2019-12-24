@@ -1,6 +1,7 @@
 // https://github.com/michael-ciniawsky/postcss-load-config
 
 module.exports = {
+  "parser": 'postcss-scss', //用来解决scss文件单行注释不识别报错，postcss不支持scss的单行注释仅支持原生的css注释
   "plugins": {
     // "postcss-import": {},
     // "postcss-url": {},

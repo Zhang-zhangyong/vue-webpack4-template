@@ -10,7 +10,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = webpackMerge(baseConfg,{
 	mode: "development",
 	devServer: {
-		port: "9000",
+		port: "8000",
 		publicPath: "/",
 		progress: true, //显示打包的进度
 		compress: true, //开启gzip压缩
@@ -34,7 +34,7 @@ module.exports = webpackMerge(baseConfg,{
 		new MiniCssExtractPlugin({
 			filename: 'style/[name].[chunkhash:8].css',
 			chunkFilename: 'style/[name].css'
-        }),
+    }),
 		new webpack.DefinePlugin({
 			"process.env": {
 				NODE_ENV: '"development"',
