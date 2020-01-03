@@ -3,7 +3,13 @@
 module.exports = {
   root: true,
   parserOptions: {
-    parser: 'babel-eslint'
+    // parser: 'babel-eslint',
+    "parser": "@typescript-eslint/parser",
+    "project": "./tsconfig.json",
+    "extraFileExtensions": [".vue"],
+    "ecmaFeatures": {
+      "legacyDecorators": true // 主要是这个选项
+    }
   },
   env: {
     browser: true,

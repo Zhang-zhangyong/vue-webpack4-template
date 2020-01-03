@@ -1,20 +1,25 @@
 <template>
   <div id="app">
-    <!-- <img src="./assets/logo.png"> -->
-    <a href="">12312312</a>
-    <Test />
+    {{ message }}
+    <Detail />
     <router-view />
   </div>
 </template>
 
-<script>
-import Test from '@/components/Test';
-export default {
-  name: 'App',
+<script lang="ts">
+import Detail from '@/components/Detail.vue';
+import { Vue, Component } from 'vue-property-decorator';
+
+@Component({
   components: {
-    Test
+    Detail
   }
-};
+})
+export default class App extends Vue {
+  message = 'Hello TypeScript';
+  private isShowNav: boolean = false;
+
+}
 </script>
 
 <style>

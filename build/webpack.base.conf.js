@@ -19,7 +19,8 @@ const createLintingRule = () => ({
 });
 
 const baseConfig = {
-  entry: "./src/main.js",
+  // entry: "./src/main.js",
+  entry: "./src/main.ts",
   module: {
     rules: [
       ...(process.env.NODE_ENV === "development" ? [createLintingRule()] : []),
@@ -58,6 +59,20 @@ const baseConfig = {
         loader: "babel-loader",
         exclude: /node_modules/
       },
+      // {
+      //   test: /\.ts$/,
+      //   exclude: /node_modules/,
+      //   enforce: 'pre',
+      //   loader: 'tslint-loader'
+      // },
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+        }
+      },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: "url-loader",
@@ -78,7 +93,7 @@ const baseConfig = {
     ]
   },
   resolve: {
-    extensions: [".js", ".vue", ".json"],
+    extensions: [".js", ".vue", ".json", ".ts"],
     alias: {
       vue: "vue/dist/vue.esm",
       "@": resolve("src")

@@ -9,6 +9,13 @@
     ]
   ],
   "plugins": [
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ], //ts 配置
+    ["@babel/plugin-proposal-class-properties"], //ts配置
     ["@babel/plugin-transform-runtime"],
     ["import", {
       "libraryName": "vant",
