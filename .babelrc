@@ -17,7 +17,7 @@
     ], //ts 配置
     ["@babel/plugin-proposal-class-properties"], //ts配置
     ["@babel/plugin-transform-runtime"],
-    ["import", {
+    ["import", {  // js vant UI配置
       "libraryName": "vant",
       "libraryDirectory": "es",
       "style": true

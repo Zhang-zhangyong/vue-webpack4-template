@@ -3,6 +3,7 @@ const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const tsImportPluginFactory = require('ts-import-plugin');
 
 function resolve(dir) {
   return path.join(__dirname, "..", dir);
@@ -70,7 +71,18 @@ const baseConfig = {
         loader: 'ts-loader',
         exclude: /node_modules/,
         options: {
+          transpileOnly: true,
+          getCustomTransformers: () => ({
+            before: [ tsImportPluginFactory({  // ts-import-plugin 配置第三方Ui库样式
+              libraryName: 'vant',
+              libraryDirectory: 'es',
+              style: true
+            })]
+          }),
           appendTsSuffixTo: [/\.vue$/],
+          compilerOptions: {
+            module: 'es2015'
+          }
         }
       },
       {

@@ -2,23 +2,20 @@
   <div class="detail">
     <div class="son">
       Detail
+      {{ title }}
     </div>
   </div>
 </template>
-<script>
+<script lang="ts">
+import { Component, Emit, Inject, Model, Prop, Provide, Vue, Watch } from 'vue-property-decorator';
 
-export default {
-  name: 'Detail',
-  data() {
-    return {
-      name: '张泳'
-    };
-  },
-  mounted () {
-  },
-  methods: {
-  },
-};
+@Component({})
+export default class Detail extends Vue {
+  @Prop({ default: '' }) title: string
+  mounted(): void {
+    console.log(1111);
+  }
+}
 </script>
 <style lang="scss" scoped>
   .detail {
