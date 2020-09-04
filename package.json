@@ -45,7 +45,7 @@
     "jest": "^24.9.0",
     "jest-serializer-vue": "^2.0.2",
     "mini-css-extract-plugin": "^0.8.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "ora": "^4.0.3",
     "postcss-loader": "^3.0.0",
     "postcss-pxtorem": "^4.0.1",
